@@ -1,6 +1,7 @@
 import { Object3D } from 'three';
+import { IView } from './IView';
 
-export class GraphicsView {
+export class GraphicsView implements IView {
   hash: any = {};
 
   born: Set<Object3D> = new Set();
@@ -30,7 +31,11 @@ export class GraphicsView {
     return Object.keys(this.hash).map((value: string, index: number, array: string[]) => it(value, index, array));
   }
 
-  dirty = false; // update view will make myself as dirty if necessary. You may want to clean yourself with my latest content if you higher level guys see me as dirty.
+  private dirty = false; // update view will make myself as dirty if necessary. You may want to clean yourself with my latest content if you higher level guys see me as dirty.
+
+  isDirty() {
+    return this.dirty;
+  }
 
   update(graphicsNodes: Object3D[]) {
     const { born, live, dead } = this;

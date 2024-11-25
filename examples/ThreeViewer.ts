@@ -94,7 +94,7 @@ class ThreeViewer extends EventDispatcher {
     this.stats?.update();
 
     // here is example how to update ui for dynamic view contents.
-    if (this.gview.dirty) {
+    if (this.gview.isDirty()) {
       this.gview.onAdd(obj3D => this.scene.add(obj3D));
       this.gview.onDel(obj3D => {
         obj3D.removeFromParent();

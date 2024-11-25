@@ -1,18 +1,16 @@
 import { Object3D } from 'three';
-import { GraphicsView } from './GraphicsView';
+import { IView } from './IView';
 
-export abstract class IDoc {
+export interface IDoc {
   /**
    * what is wanted for views
    */
-  abstract getGraphicsNodes(): Object3D[];
+  getGraphicsNodes(): Object3D[];
 
   // eslint-disable-next-line no-unused-vars
-  abstract addView(graphicsView: GraphicsView);
+  addView(graphicsView: IView);
 
-  abstract getViews(): GraphicsView[];
+  getViews(): IView[];
 
-  updateViews() {
-    this.getViews().forEach(view => view.update(this.getGraphicsNodes()));
-  }
+  updateViews();
 }

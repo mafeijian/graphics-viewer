@@ -1,8 +1,7 @@
 import { BoxGeometry, Mesh, MeshBasicMaterial, Object3D } from 'three';
-import { IDoc } from '../src/IDoc';
-import { GraphicsView } from '../src/GraphicsView';
+import { GraphicsView, IDoc } from '../src';
 
-export class Doc extends IDoc {
+export class Doc implements IDoc {
   lastTime: number = 0;
 
   addBox = true;
@@ -17,6 +16,10 @@ export class Doc extends IDoc {
 
   getViews(): GraphicsView[] {
     return this.views;
+  }
+
+  updateViews() {
+    this.getViews().forEach(view => view.update(this.getGraphicsNodes()));
   }
 
   getGraphicsNodes(): Object3D[] {
