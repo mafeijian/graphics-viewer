@@ -8,9 +8,9 @@ export interface IDoc {
   getGraphicsNodes(): Object3D[];
 
   // eslint-disable-next-line no-unused-vars
-  addView(graphicsView: IView);
+  addView(graphicsView: IView): void;
 
   getViews(): IView[];
 
-  updateViews();
+  updateViews(): void;
 }
